@@ -1,0 +1,194 @@
+
+/*Script BD DREC*/
+
+create database db_drec;
+
+use db_drec;
+
+/*tabla privilegios*/
+create table tPrivilegios(
+id_Privilegio varchar(5) not null,
+tipo_Privilegio varchar(50) not null, /* (cargo) -> administrador, planillero, consultor*/
+primary key(id_Privilegio)
+);
+
+insert into tPrivilegios values('pri01','administrador');
+insert into tPrivilegios values('pri02','planillero');
+insert into tPrivilegios values('pri03','consultor');
+
+/*tabla usuarios*/
+create table tUsuario(
+	usuario varchar(25) not null, 
+	contraseña varchar(25) not null,
+    dni varchar(8) not null,
+    id_Privilegio varchar(5) not null,
+    primary key(usuario),
+    foreign key(id_Privilegio) references tPrivilegios(id_Privilegio)
+);
+
+insert into tUsuario values('user01','pass01','44445555','pri01');
+
+/*tabla haberes*/
+create table tHaberes(
+	id int auto_increment,
+    BASICO dec(7,2),
+    PERSONAL dec(7,2),
+    TP_HOMOL dec(7,2),
+    TP_HOMOL_2 dec(7,2),
+    DIFERENCIAL dec(7,2),
+    FAMILIAR dec(7,2),
+    REF_MOV dec(7,2),
+    ENCARGOS dec(7,2),
+    CONTRATO dec(7,2),
+    BON_DIR dec(7,2),
+    DS_021 dec(7,2),
+    AGUINALDO dec(7,2),
+    ESPECIAL dec(7,2),
+    REUNIFICADA dec(7,2),
+    IGV dec(7,2),
+    CTS_RUR dec(7,2),
+    DL_25671_19 dec(7,2),
+    PR_JU_CO dec(7,2),
+    L_26504 dec(7,2),
+    DL_25897 dec(7,2),
+    DIREC dec(7,2),
+    DU_90_96 dec(7,2),
+    DU_73_97 dec(7,2),
+    DU_11_99 dec(7,2),
+    DU_105_01 dec(7,2),
+    R01 dec(7,2),
+    R02 dec(7,2),
+    R03 dec(7,2),
+    R04 dec(7,2),
+    R05 dec(7,2),
+    R06 dec(7,2),
+    R07 dec(7,2),
+    R08 dec(7,2),
+    R09 dec(7,2),
+    R10 dec(7,2),
+    R11 dec(7,2),
+    R12 dec(7,2),
+    R13 dec(7,2),
+    R14 dec(7,2),
+    R15 dec(7,2),
+    R16 dec(7,2),
+    R17 dec(7,2),
+    R18 dec(7,2),
+    R19 dec(7,2),
+    R20 dec(7,2),
+    R21 dec(7,2),
+    R22 dec(7,2),
+    R23 dec(7,2),
+    R24 dec(7,2),
+    R25 dec(7,2),
+    primary key(id)
+);
+
+/*tabla descuentos*/
+create table tDescuentos(
+	id int auto_increment,
+    L_20530 dec(7,2),
+    L_19990 dec(7,2),
+    SEG_SOCIAL dec(7,2),
+    D_ADM dec(7,2),
+    D_MAGIST dec(7,2),
+    REMOPAL dec(7,2),
+    CAP_YUPANQUI dec(7,2),
+    JUDICIAL dec(7,2),
+    L_25897_AFP dec(7,2),
+    RET_AGUINALDO dec(7,2),
+    RESPONSAB dec(7,2),
+    SESDIS dec(7,2),
+    FONAVI dec(7,2),
+    MULTAS dec(7,2),
+    PESQUERIA dec(7,2),
+    DERESE dec(7,2),
+    S_SANT_D dec(7,2),
+    C_IMPERI dec(7,2),
+    SUBCAFAE dec(7,2),
+    INTERBANK dec(7,2),
+    SITRADEC dec(7,2),
+    A_F_PENS dec(7,2),
+    ATACSE dec(7,2),
+    TARDANZAS dec(7,2),
+    CREDINKA dec(7,2),
+    URPENS dec(7,2),
+    C_MUNICIPAL dec(7,2),
+    P01 dec(7,2),
+    P02 dec(7,2),
+    P03 dec(7,2),
+    P04 dec(7,2),
+    P05 dec(7,2),
+    P06 dec(7,2),
+    P07 dec(7,2),
+    P08 dec(7,2),
+    P09 dec(7,2),
+    P10 dec(7,2),
+    P11 dec(7,2),
+    P12 dec(7,2),
+    P13 dec(7,2),
+    P14 dec(7,2),
+    P15 dec(7,2),
+    P16 dec(7,2),
+    P17 dec(7,2),
+    P18 dec(7,2),
+    P19 dec(7,2),
+    P20 dec(7,2),
+    P21 dec(7,2),
+    P22 dec(7,2),
+    P23 dec(7,2),
+    P24 dec(7,2),
+    P25 dec(7,2),
+    L01 dec(7,2),
+    L02 dec(7,2),
+    L03 dec(7,2),
+    L04 dec(7,2),
+    L05 dec(7,2),
+    L06 dec(7,2),
+    L07 dec(7,2),
+    L08 dec(7,2),
+    L09 dec(7,2),
+    L10 dec(7,2),
+    L11 dec(7,2),
+    L12 dec(7,2),
+    L13 dec(7,2),
+    L14 dec(7,2),
+    L15 dec(7,2),
+    L16 dec(7,2),
+    L17 dec(7,2),
+    L18 dec(7,2),
+    L19 dec(7,2),
+    L20 dec(7,2),
+    L21 dec(7,2),
+    L22 dec(7,2),
+    L23 dec(7,2),
+    L24 dec(7,2),
+    L25 dec(7,2),
+    primary key(id)
+);
+
+/*tabla boletas*/
+create table tBoletas(
+	id int auto_increment,
+    Mes varchar(9) not null,
+    Año varchar(4) not null,
+    Ape_Paterno varchar(50),
+    Ape_Materno varchar(50),
+    Nombres varchar(100),
+    DNI varchar(8) not null,
+    Cod_Modular varchar(20),
+    Cargo varchar(60),
+    Nivel_Remunerativo varchar(20),
+    Horas varchar(3),
+    Condicion varchar(50) not null,
+    Cod_Planilla varchar(30),
+    Establecimiento varchar(120),
+    id_Haberes int not null,
+    id_Descuentos int not null,
+    T_REMUN dec(8,2),
+    T_DSCTO dec(8,2),
+    T_LIQUI dec(8,2),
+    primary key(id),
+    foreign key(id_Haberes) references tHaberes(id),
+    foreign key(id_Descuentos) references tDescuentos(id)
+);
